@@ -3,12 +3,13 @@ import { Document } from 'mongoose';
 
 export type ReservaDocument = Reserva & Document;
 
+// O schema funciona como uma 'classe' para definir como o objeto deve ser armazenado no banco pelo mongoose
 @Schema({ timestamps: true })
 export class Reserva {
   @Prop({ required: true })
   nomeCliente: string;
 
-  @Prop({ required: true })
+  @Prop()
   telefone: string;
 
   @Prop({ required: true })
