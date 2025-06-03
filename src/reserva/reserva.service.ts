@@ -51,13 +51,13 @@ export class ReservaService {
       throw new BadRequestException('ID inválido');
     }
 
-    const updated = await this.reservaModel.findByIdAndUpdate(id, reserva, { new: false }).exec();
+    const updated = await this.reservaModel.findByIdAndUpdate(id, reserva, { new: true }).exec();
 
     if (!updated) {
       throw new NotFoundException('Reserva não encontrada!');
     }
 
-    return updated;
+    return this.reservaModel.findById(id).exec();
   }
   
   async delete(id: string): Promise<Reserva | null> {
